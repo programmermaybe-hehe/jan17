@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Chikuu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="script.js"></script>
+
+
+
+<style>
+body {
+  margin: 0;
+  text-align: center;
+  font-family: Georgia, serif;
+}
+
+.scene { display: none; }
+.scene.active { display: block; }
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 10px;
+}
+
+#runner {
+  position: absolute;
+  width: 120px;
+  left: -150px;
+  bottom: 100px;
+  display: none;
+  transition: transform 0.8s ease;
+}
+
+.run-in { transform: translateX(300px); }
+.run-away { transform: translateX(1400px); }
+
+.hidden { display: none; }
+
+.memories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+#wish {
+  grid-column: span 3;
+  padding: 20px;
+  line-height: 1.7;
+}
+
+video { max-width: 90%; }
+
+</style>
+</head>
+
+<body>
+
+<!-- SCENE 0 -->
+<div class="scene active" id="scene0">
+  <h1>HAPPY BIRTHDAY CHIKUU ❤️</h1>
+  <video id="cake" src="videos/cakee.mp4"></video>
+  <p>Cut the cake 🍰</p>
+</div>
+
+<!-- SCENE 1 -->
+<div class="scene" id="scene1">
+  <h2>Gift chahiye?? 🤭</h2>
+  <button id="yes">Yes</button>
+  <button id="no">No</button>
+  <img id="runner" src="images/runner.jpeg">
+</div>
+
+<!-- SCENE 2 -->
+<div class="scene" id="scene2">
+  <img id="gift" src="images/gift.webp" width="200">
+  <p>Gift toh lena hi padega hehe 😝</p>
+</div>
+
+<!-- SCENE 3 -->
+<div class="scene" id="scene3">
+  <img id="letter" src="images/letter.jpeg" width="200">
+</div>
+
+<!-- SCENE 4 -->
+<div class="scene" id="scene4">
+  <div class=" best memories">
+    <img src="images/memory1.jpg">
+    <img src="images/memory2.png">
+    <img src="images/memory3.jpg">
+
+    <div id="wish">
+      <strong>Happy Birthday, Cheeku 🤍</strong><br><br>
+      You don’t need to become anything else.<br>
+      Just being you is already enough.<br><br>
+      I hope your days feel lighter,<br>
+      your heart feels safe,<br>
+      and you always remember you matter.
+    </div>
+
+    <img src="images/memory4.jpg">
+    <img src="images/memory5.png">
+    <img src="images/memory6.jpg">
+  </div>
+  <button id="nextToHug">Next</button>
+</div>
+
+<!-- SCENE 5 -->
+<div class="scene" id="scene5">
+  <img src="images/bouquet.jpg" width="250"><br><br>
+  <video src="videos/hug.mp4" autoplay muted loop></video>
+  <p>Asli wala gift mil jayega jald hi 🤍</p>
+  <button id="finalNext">Next</button>
+</div>
+
+<!-- SCENE 6 -->
+<div class="scene" id="scene6">
+  <video id="sae" src="videos/sae.mp4" controls></video>
+</div>
+
+<script>
+const scenes = document.querySelectorAll(".scene");
+const music = new Audio("audio/blue.mp3");
+music.loop = true;
+
+function showScene(n) {
+  scenes.forEach(s => s.classList.remove("active"));
+  scenes[n].classList.add("active");
+}
+
+document.getElementById("cake").onclick = () => {
+  music.play();
+  showScene(1);
+};
+
+const noBtn = document.getElementById("no");
+const runner = document.getElementById("runner");
+
+noBtn.onclick = () => {
+  runner.style.display = "block";
+  runner.classList.add("run-in");
+
+  setTimeout(() => {
+    noBtn.style.display = "none";
+  }, 600);
+
+  setTimeout(() => {
+    runner.classList.add("run-away");
+  }, 900);
+};
+
+document.getElementById("yes").onclick = () => {
+  showScene(2);
+};
+
+document.getElementById("gift").onclick = () => {
+  showScene(3);
+};
+
+document.getElementById("letter").onclick = () => {
+  showScene(4);
+};
+
+document.getElementById("nextToHug").onclick = () => {
+  showScene(5);
+};
+
+document.getElementById("finalNext").onclick = () => {
+  music.pause();
+  music.currentTime = 0;
+  showScene(6);
+  document.getElementById("sae").play();
+};
+</script>
+
+</body>
+</html>
