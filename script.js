@@ -10,6 +10,9 @@ function showScene(n) {
 
 /* SCENE 0 → SCENE 1 */
 const cake = document.getElementById("cake");
+cake.addEventListener("Click",() => {
+  cake.play();
+});
 cake.onclick = () => {
   music.play().catch(()=>{});
   showScene(1);
