@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: Georgia, serif;
+  background: lavender; /* you can change */
+  color: #000;
+}
+
+.scene {
+  display: none;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.scene.active {
+  display: block;
+}
+
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 12px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Videos */
+video {
+  width: 90%;
+  max-width: 420px;
+  border-radius: 16px;
+}
+
+/* Runner animation */
+#runner {
+  position: absolute;
+  width: 120px;
+  left: -150px;
+  bottom: 120px;
+  display: none;
+  transition: transform 0.8s ease;
+}
+
+.run-in {
+  transform: translateX(300px);
+}
+
+.run-away {
+  transform: translateX(1400px);
+}
+
+/* Gift & Letter */
+#gift,
+#letter {
+  width: 200px;
+  cursor: pointer;
+  margin: 20px auto;
+}
+
+/* Memories grid */
+.memories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 10px;
+}
+
+.memories img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* Wish text in center */
+#wish {
+  grid-column: span 3;
+  padding: 20px;
+  line-height: 1.7;
+  max-width: 420px;
+  margin: auto;
+  font-size: 1rem;
+}
+
+/* Bouquet */
+.bouquet {
+  width: 70%;
+  max-width: 300px;
+  margin: 20px auto;
+}
